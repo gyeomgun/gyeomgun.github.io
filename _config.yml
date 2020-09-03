@@ -1,64 +1,107 @@
 # Welcome to Jekyll!
 #
 # This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely need to edit after that.
+# which you are expected to set up once and rarely edit after that. If you find
+# yourself editing this file very often, consider using Jekyll's data files
+# feature for the data you need to update frequently.
+#
 # For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'jekyll serve'. If you change this file, please restart the server process.
+# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
 
 # Site settings
-remote_theme : gyeomgun/gyeomgun
-title: Gyeomgun!
-brief-intro: 개발자
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://gyeomgun.github.io" # the base hostname & protocol for your site
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.myvariable }}.
+theme: jekyll-theme-so-simple
+# remote_theme: mmistakes/so-simple-theme
+skin: "/assets/css/skins/default.css"
+locale: en-US
+title: "My Awesome Site"
+description: "It really is the best."
+baseurl: "" # the subpath of your site, e.g. "/blog"
+url: "https://gyeomgun.github.io"
+logo: # path of site logo, e.g. "/images/logo.png"
+date_format: "%B %-d, %Y"
+read_time: # reading time estimates, e.g. true
+words_per_minute: # 200
+mathjax:
+  enable: # MathJax equations, e.g. true, false (default)
+  combo:  # "tex-svg" (default), "tex-mml-chtml", etc.: docs.mathjax.org/en/latest/web/components/combined.html
+  tags:  # "none", "ams" (default), "all"
+google_fonts:
+  - name: "Source Sans Pro"
+    weights: "400,400i,700,700i"
+  - name: "Lora"
+    weights: "400,400i,700,700i"
+google_analytics: # Google Analytics id, e.g. "UA-NNNNNNNN-N"
+disqus:
+  shortname: # Disqus shortname, e.g. "my_disqus_shortname"
+twitter:
+  username: # site's Twitter username, e.g. "mmistakes"
 
-permalink: /:year/:month/:day/:title/
-
-# other links
-twitter_username:
-facebook_username: 
-github_username:  gyeomgun
-email: interhg@gmail.com
-weibo_username: 
-zhihu_username: 
-linkedIn_username: Hyungyeom Kim
-dribbble_username:
-
-description_footer: 아래설명
-
-# comments
-# two ways to comment, only choose one, and use your own short name
-# 两种评论插件，选一个就好了，使用自己的 short_name
-duoshuo_shortname: #hygblog
-disqus_shortname:
-
-# statistic analysis 统计代码
-# 百度统计 id，将统计代码替换为自己的百度统计id，即
-# hm.src = "//hm.baidu.com/hm.js?xxxxxxxxxxxx";
-# xxxxx字符串
-baidu_tongji_id: 
-google_analytics_id: 
+# Liquid
+liquid:
+  error_mode: strict
 
 # Build settings
+permalink: /:categories/:title/
 markdown: kramdown
+feed:
+  path: atom.xml
 
-kramdown:
-  input: GFM
-  syntax_highlighter: rouge
+# Pagination - https://jekyllrb.com/docs/pagination/
+# paginate: 10
+# paginate_path: /page:num/
 
-# port
-# port: 1234
+# Search
+search_full_content: false # can have performance implications for large sites
 
-# url
-category_dir: category/
-tag_dir: tag/
+# Taxonomy pages
+# category_archive_path: "/categories/#"
+# tag_archive_path: "/tags/#"
 
-# excerpt
-excerpt_separator: "\n\n\n\n"
-
-# paginate
-gems: [jekyll-paginate]
-paginate: 10
+# Exclude from processing.
+# The following items will not be processed, by default. Create a custom list
+# to override the default setting.
+# exclude:
+#   - Gemfile
+#   - Gemfile.lock
+#   - node_modules
+#   - vendor/bundle/
+#   - vendor/cache/
+#   - vendor/gems/
+#   - vendor/ruby/
 
 plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
   - jekyll-paginate
+
+# Front Matter Defaults
+defaults:
+  # Posts defaults
+  - scope:
+      path: "_posts"
+      type: posts
+    values:
+      layout: post
+      share: true
+
+# Site Author
+author:
+  name:
+  picture:
+  email:
+  twitter:
+  links:
+    - title:
+      url:
+      icon:
+
+# Footer Links
+footer_links:
+  - title: Feed
+    url: atom.xml
+    icon: fas fa-rss-square
